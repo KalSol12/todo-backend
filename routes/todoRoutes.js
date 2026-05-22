@@ -6,7 +6,13 @@ const {
   updateTodo,
   deleteTodo,
   clearAllTodos,
+  reorderTodos,
 } = require("../controllers/todoController");
+const { protect } = require("../middleware/authMiddleware");
+
+router.use(protect);
+
+router.put("/reorder", reorderTodos);
 
 // Handles GET /api/todos and POST /api/todos
 router.route("/")
